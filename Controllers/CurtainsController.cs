@@ -26,5 +26,19 @@ namespace MarfazahFashion.Controllers
 
             return View(viewModel);
         }
+
+        
+        public ActionResult Detail(int id)
+        {
+            Curtain viewModel = new Curtain();
+            foreach (var curtain in curtains)
+            {
+                if (curtain.Id == id)
+                {
+                    viewModel = curtain;
+                }
+            }
+            return View(viewModel);
+        }
     }
 }
