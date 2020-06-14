@@ -6,8 +6,9 @@ using System.Web;
 
 namespace MarfazahFashion.ViewModels
 {
-    public class IndexCurtainViewModel
+    public class NewCustomerViewModel
     {
-        public List<Curtain> Curtains { get; set; }
+        public IEnumerable<MembershipType> MembershipTypes { get; set; }
+        public Customer Customer { get; set; }
     }
 }

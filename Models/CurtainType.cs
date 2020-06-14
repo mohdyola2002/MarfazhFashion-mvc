@@ -6,16 +6,12 @@ using System.Web;
 
 namespace MarfazahFashion.Models
 {
-    public class Curtain
+    public class CurtainType
     {
         public int Id { get; set; }
         [Required]
-        [StringLength(150)]
+        [StringLength(50)]
         public string Name { get; set; }
-        public int Price { get; set; }
-        public int NumberInStock { get; set; }
-        public CurtainType CurtainType { get; set; }
-        public int CurtainTypeId { get; set; }
 
     }
 }
