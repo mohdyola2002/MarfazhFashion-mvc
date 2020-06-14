@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<MarfazahFashion.Models.Customer>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Customers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,7 +15,7 @@ else
         <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Discount Rate</th>
+                <th scope="col">Membership Type</th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +23,7 @@ else
             {
                 <tr>
                     <td> @Html.ActionLink(customer.Name, "Detail", "Customers", new { id = customer.Id }, null) </td>
-                    <td> @customer.MembershipType.DiscountRate% </td>
+                    <td> @customer.MembershipType.Name </td>
                 </tr>
             }
         </tbody>

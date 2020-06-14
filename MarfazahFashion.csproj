@@ -199,6 +199,26 @@
     <Compile Include="Migrations\202006140907476_RemoveMembershipTypeName.Designer.cs">
       <DependentUpon>202006140907476_RemoveMembershipTypeName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006140912228_AddMembershipTypesName.cs" />
+    <Compile Include="Migrations\202006140912228_AddMembershipTypesName.Designer.cs">
+      <DependentUpon>202006140912228_AddMembershipTypesName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006140918583_UpdateMembershipTypesRecords.cs" />
+    <Compile Include="Migrations\202006140918583_UpdateMembershipTypesRecords.Designer.cs">
+      <DependentUpon>202006140918583_UpdateMembershipTypesRecords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006140941226_AddCustomerBirthDate.cs" />
+    <Compile Include="Migrations\202006140941226_AddCustomerBirthDate.Designer.cs">
+      <DependentUpon>202006140941226_AddCustomerBirthDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006140947523_MakeCustomerBirthDateNullable.cs" />
+    <Compile Include="Migrations\202006140947523_MakeCustomerBirthDateNullable.Designer.cs">
+      <DependentUpon>202006140947523_MakeCustomerBirthDateNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006141040541_AddCurtainsTable.cs" />
+    <Compile Include="Migrations\202006141040541_AddCurtainsTable.Designer.cs">
+      <DependentUpon>202006141040541_AddCurtainsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Curtain.cs" />
@@ -307,6 +327,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006140907476_RemoveMembershipTypeName.resx">
       <DependentUpon>202006140907476_RemoveMembershipTypeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006140912228_AddMembershipTypesName.resx">
+      <DependentUpon>202006140912228_AddMembershipTypesName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006140918583_UpdateMembershipTypesRecords.resx">
+      <DependentUpon>202006140918583_UpdateMembershipTypesRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006140941226_AddCustomerBirthDate.resx">
+      <DependentUpon>202006140941226_AddCustomerBirthDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006140947523_MakeCustomerBirthDateNullable.resx">
+      <DependentUpon>202006140947523_MakeCustomerBirthDateNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006141040541_AddCurtainsTable.resx">
+      <DependentUpon>202006141040541_AddCurtainsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
