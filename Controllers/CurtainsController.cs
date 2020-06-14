@@ -21,6 +21,11 @@ namespace MarfazahFashion.Controllers
             _context.Dispose();
         }
 
+        public ActionResult Action(int id)
+        {
+            return View();
+        }
+
         // GET: Curtains
         public ActionResult Index()
         {
