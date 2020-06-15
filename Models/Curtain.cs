@@ -9,12 +9,19 @@ namespace MarfazahFashion.Models
     public class Curtain
     {
         public int Id { get; set; }
+
         [Required]
         [StringLength(150)]
         public string Name { get; set; }
+
         public int Price { get; set; }
+
+        [Display(Name = "Number In Stock")]
         public int NumberInStock { get; set; }
+
         public CurtainType CurtainType { get; set; }
+
+        [Display(Name = "Type")]
         public int CurtainTypeId { get; set; }
 
     }

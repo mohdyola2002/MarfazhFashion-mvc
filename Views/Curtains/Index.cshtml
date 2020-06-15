@@ -6,6 +6,10 @@
 
 <h2>Curtains</h2>
 
+@Html.ActionLink("NEW CURTAIN", "New", "Curtains", null, new { @class = "btn btn-primary"})
+
+<hr />
+
 @if (!Model.Any())
 {
     <text>We currently don't have any curtain yet!</text>

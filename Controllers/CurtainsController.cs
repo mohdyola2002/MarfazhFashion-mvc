@@ -21,9 +21,23 @@ namespace MarfazahFashion.Controllers
             _context.Dispose();
         }
 
-        public ActionResult Action(int id)
+        public ActionResult New()
         {
-            return View();
+            var curtainTypes = _context.CurtainTypes.ToList();
+            var viewModel = new CurtainFormViewModel
+            {
+                CurtainTypes = curtainTypes
+            };
+            return View("CurtainForm", viewModel);
+        }
+
+        public ActionResult Save(Curtain curtain)
+        {
+            if (curtain.Id == 0)
+                _context.Curtains.Add(curtain);
+
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Curtains");
         }
 
         // GET: Curtains

@@ -1,0 +1,32 @@
+﻿@model MarfazahFashion.ViewModels.CurtainFormViewModel
+@{
+    ViewBag.Title = "Curtains";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Curtain Form</h2>
+
+@using (Html.BeginForm("Save", "Curtains"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Curtain.Name)
+        @Html.TextBoxFor(m => m.Curtain.Name, new { @class = "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Curtain.CurtainTypeId)
+        @Html.DropDownListFor(m => m.Curtain.CurtainTypeId, new SelectList(Model.CurtainTypes, "Id", "Name"), "Select curtain type...",new { @class = "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Curtain.Price)
+        @Html.TextBoxFor(m => m.Curtain.Price, new { @class = "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Curtain.NumberInStock)
+        @Html.TextBoxFor(m => m.Curtain.NumberInStock, new { @class = "form-control"})
+    </div>
+
+    @Html.HiddenFor(m => m.Curtain.Id)
+    <button type="submit" class="btn btn-primary">SAVE</button>
+
+}
+
