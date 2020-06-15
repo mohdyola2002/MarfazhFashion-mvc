@@ -15,7 +15,7 @@ namespace MarfazahFashion.Dtos
         [StringLength(250)]
         public string Name { get; set; }
 
-        [Min18IYearsIfARetailer]
+        //[Min18IYearsIfARetailer]
         public DateTime? BirthDate { get; set; }
 
         public bool IsSubscribedToNewsLetter { get; set; }
