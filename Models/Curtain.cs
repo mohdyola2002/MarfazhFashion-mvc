@@ -17,6 +17,7 @@ namespace MarfazahFashion.Models
         public int Price { get; set; }
 
         [Display(Name = "Number In Stock")]
+        [Range(1, 20, ErrorMessage = "The number of the curtain in stock must be between 1 and 20")]
         public int NumberInStock { get; set; }
 
         public CurtainType CurtainType { get; set; }

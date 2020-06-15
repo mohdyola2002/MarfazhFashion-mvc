@@ -8,25 +8,35 @@
 
 @using (Html.BeginForm("Save", "Curtains"))
 {
+    @Html.ValidationSummary()
     <div class="form-group">
-        @Html.LabelFor(m => m.Curtain.Name)
-        @Html.TextBoxFor(m => m.Curtain.Name, new { @class = "form-control"})
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Name)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Curtain.CurtainTypeId)
-        @Html.DropDownListFor(m => m.Curtain.CurtainTypeId, new SelectList(Model.CurtainTypes, "Id", "Name"), "Select curtain type...",new { @class = "form-control"})
+        @Html.LabelFor(m => m.CurtainTypeId)
+        @Html.DropDownListFor(m => m.CurtainTypeId, new SelectList(Model.CurtainTypes, "Id", "Name"), "Select curtain type...", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CurtainTypeId)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Curtain.Price)
-        @Html.TextBoxFor(m => m.Curtain.Price, new { @class = "form-control"})
+        @Html.LabelFor(m => m.Price)
+        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Price)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Curtain.NumberInStock)
-        @Html.TextBoxFor(m => m.Curtain.NumberInStock, new { @class = "form-control"})
+        @Html.LabelFor(m => m.NumberInStock)
+        @Html.TextBoxFor(m => m.NumberInStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NumberInStock)
     </div>
 
-    @Html.HiddenFor(m => m.Curtain.Id)
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
     <button type="submit" class="btn btn-primary">SAVE</button>
 
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
 }
 

@@ -24,7 +24,7 @@ namespace MarfazahFashion.Controllers
         public ActionResult New()
         {
             var curtainTypes = _context.CurtainTypes.ToList();
-            var viewModel = new CurtainFormViewModel
+            var viewModel = new CurtainFormViewModel()
             {
                 CurtainTypes = curtainTypes
             };
@@ -33,17 +33,28 @@ namespace MarfazahFashion.Controllers
 
         public ActionResult Edit(int id)
         {
-            var viewModel = new CurtainFormViewModel
+            var curtain = _context.Curtains.SingleOrDefault(c => c.Id == id);
+            if (curtain == null)
+                return HttpNotFound();
+            var viewModel = new CurtainFormViewModel(curtain)
             {
-                Curtain = _context.Curtains.SingleOrDefault(c => c.Id == id),
                 CurtainTypes = _context.CurtainTypes.ToList()
             };
             return View("CurtainForm", viewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Curtain curtain)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CurtainFormViewModel(curtain)
+                {
+                    CurtainTypes = _context.CurtainTypes.ToList()
+                };
+                return View("CurtainForm", viewModel);
+            }
             if (curtain.Id == 0)
                 _context.Curtains.Add(curtain);
             else
