@@ -11,5 +11,8 @@ namespace MarfazahFashion.Models
         public string Name { get; set; }
         public short MinimumOrder { get; set; }
         public byte DiscountRate { get; set; }
+
+        public static readonly byte Unknown = 0;
+        public static readonly byte Customer = 1;
     }
 }

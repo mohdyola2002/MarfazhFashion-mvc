@@ -10,11 +10,12 @@ namespace MarfazahFashion.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter your name")]
         [StringLength(250)]
         public string Name { get; set; }
 
         [Display(Name = "Date of Birth")]
+        [Min18IYearsIfARetailer]
         public DateTime? BirthDate { get; set; }
 
         public bool IsSubscribedToNewsLetter { get; set; }
