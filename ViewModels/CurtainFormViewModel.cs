@@ -10,5 +10,14 @@ namespace MarfazahFashion.ViewModels
     {
         public IEnumerable<CurtainType> CurtainTypes { get; set; }
         public Curtain Curtain { get; set; }
+        public string Title
+        {
+            get
+            {
+                if (Curtain != null && Curtain.Id != 0)
+                    return "Edit Curtain";
+                return "New Curtain";
+            }
+        }
     }
 }

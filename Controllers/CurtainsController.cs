@@ -31,11 +31,29 @@ namespace MarfazahFashion.Controllers
             return View("CurtainForm", viewModel);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var viewModel = new CurtainFormViewModel
+            {
+                Curtain = _context.Curtains.SingleOrDefault(c => c.Id == id),
+                CurtainTypes = _context.CurtainTypes.ToList()
+            };
+            return View("CurtainForm", viewModel);
+        }
+
+        [HttpPost]
         public ActionResult Save(Curtain curtain)
         {
             if (curtain.Id == 0)
                 _context.Curtains.Add(curtain);
-
+            else
+            {
+                var curtainInDb = _context.Curtains.Single(c => c.Id == curtain.Id);
+                curtainInDb.Name = curtain.Name;
+                curtainInDb.CurtainTypeId = curtain.CurtainTypeId;
+                curtainInDb.Price = curtain.Price;
+                curtainInDb.NumberInStock = curtain.NumberInStock;
+            }
             _context.SaveChanges();
             return RedirectToAction("Index", "Curtains");
         }

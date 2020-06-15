@@ -27,7 +27,7 @@ else
         @foreach (var curtain in Model)
         {
             <tr>
-                <td>@Html.ActionLink(curtain.Name, "Detail", "Curtains", new { id = curtain.Id }, null)</td>
+                <td>@Html.ActionLink(curtain.Name, "Edit", "Curtains", new { id = curtain.Id }, null)</td>
                 <td>@curtain.CurtainType.Name</td>
             </tr>
         }
