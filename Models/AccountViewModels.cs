@@ -65,6 +65,10 @@ namespace MarfazahFashion.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "National I.D")]
+        public string NationalId { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
