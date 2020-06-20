@@ -54,9 +54,9 @@ namespace MarfazahFashion
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "277871503555034",
+               appSecret: "fc2a1e280e7a8a6a01c0a093147d4745");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

@@ -155,7 +155,8 @@ namespace MarfazahFashion.Controllers
                 var user = new ApplicationUser { 
                     UserName = model.Email,
                     Email = model.Email,
-                    NationalId = model.NationalId
+                    NationalId = model.NationalId,
+                    Phone = model.Phone
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -378,7 +379,12 @@ namespace MarfazahFashion.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { 
+                    UserName = model.Email,
+                    Email = model.Email,
+                    NationalId = model.NationalId,
+                    Phone = model.Phone
+                };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
