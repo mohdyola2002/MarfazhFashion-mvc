@@ -3,6 +3,7 @@ using MarfazahFashion.Dtos;
 using MarfazahFashion.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -23,8 +24,11 @@ namespace MarfazahFashion.Controllers.Api
         [HttpGet]
         public IHttpActionResult GetCurtains()
         {
-
-            return Ok(_context.Curtains.ToList().Select(Mapper.Map<Curtain, CurtainDto>));
+            var curtains = _context.Curtains
+                .Include(c => c.CurtainType)
+                .ToList()
+                .Select(Mapper.Map<Curtain, CurtainDto>);
+            return Ok(curtains);
         }
 
         //GET api/curtains/1

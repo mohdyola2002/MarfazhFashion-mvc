@@ -10,28 +10,65 @@
 
 <hr />
 
-@if (!Model.Any())
-{
-    <text>We currently don't have any curtain yet!</text>
-}
-else
-{
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover" id="curtains">
     <thead>
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Type</th>
+            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var curtain in Model)
-        {
-            <tr>
-                <td>@Html.ActionLink(curtain.Name, "Edit", "Curtains", new { id = curtain.Id }, null)</td>
-                <td>@curtain.CurtainType.Name</td>
-            </tr>
-        }
+       
     </tbody>
 </table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            //loading records
+            var table = $("#curtains").DataTable({
+                ajax: {
+                    url: "/api/curtains",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, types, curtain) {
+                            return "<a href='/curtains/edit/" + curtain.id + "'>" + data + "</a>";
+                        }
+                    },
+                    {
+                        data: "curtainType.name"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-curtain-id='" + data + "'>Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            //Deleting record
+            $("#curtains").on("click", ".js-delete", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure you want to delete this curtain", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/curtains/" + button.attr("data-curtain-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+            
+        });
+    </script>
 }
 

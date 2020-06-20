@@ -16,6 +16,7 @@ namespace MarfazahFashion.App_Start
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<Curtain, CurtainDto>();
             Mapper.CreateMap<MembershipType, MembershipTypeDto>();
+            Mapper.CreateMap<CurtainType, CurtainTypeDto>();
 
             //Dto to Domain
             Mapper.CreateMap<CustomerDto, Customer>()

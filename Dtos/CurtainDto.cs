@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarfazahFashion.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace MarfazahFashion.Dtos
 
         [Range(1, 20)]
         public int NumberInStock { get; set; }
+
+        public CurtainTypeDto CurtainType { get; set; }
 
         public int CurtainTypeId { get; set; }
     }
