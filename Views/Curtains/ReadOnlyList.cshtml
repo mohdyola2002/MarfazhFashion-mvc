@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MarfazahFashion.Models.Curtain>
+@{
+    ViewBag.Title = "Curtains";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Curtains</h2>
+<table class="table table-bordered table-hover" id="curtains">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            //loading records
+            var table = $("#curtains").DataTable({
+                ajax: {
+                    url: "/api/curtains",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "curtainType.name"
+                    }
+                ]
+            });
+        });
+    </script>
+}
+

@@ -45,6 +45,7 @@ namespace MarfazahFashion.Controllers.Api
         }
 
         //POST api/curtains
+        [Authorize(Roles = RoleName.CanManageCurtains)]
         [HttpPost]
         public IHttpActionResult CreateCurtain(CurtainDto curtainDto)
         {
@@ -61,6 +62,7 @@ namespace MarfazahFashion.Controllers.Api
         }
 
         //PUT api/curtains/1
+        [Authorize(Roles = RoleName.CanManageCurtains)]
         [HttpPut]
         public IHttpActionResult UpdateCurtain(int id, CurtainDto curtainDto)
         {
@@ -78,6 +80,7 @@ namespace MarfazahFashion.Controllers.Api
         }
 
         //DELETE api/curtain/1
+        [Authorize(Roles = RoleName.CanManageCurtains)]
         [HttpDelete]
         public IHttpActionResult DeleteCurtain(int id)
         {
