@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Caching;
 using System.Web;
 using System.Web.Mvc;
 
@@ -76,6 +77,13 @@ namespace MarfazahFashion.Controllers
         // GET: Customers
         public ActionResult Index()
         {
+            //Data Caching
+            if (MemoryCache.Default["MembershipTypes"] == null)
+            {
+                MemoryCache.Default["MembershipTypes"] = _context.MembershipTypes.ToList();
+            }
+
+            var membershipTypes = MemoryCache.Default["MembershipTypes"] as IEnumerable<MembershipType>;
             return View();
         }
 
