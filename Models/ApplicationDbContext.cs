@@ -13,6 +13,7 @@ namespace MarfazahFashion.Models
         public DbSet<Curtain> Curtains { get; set; }
         public DbSet<MembershipType> MembershipTypes { get; set; }
         public DbSet<CurtainType> CurtainTypes { get; set; }
+        public DbSet<Purchase> Purchases { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

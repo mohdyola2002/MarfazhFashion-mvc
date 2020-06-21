@@ -204,10 +204,13 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Api\NewPurchasesController.cs" />
+    <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="Dtos\CurtainDto.cs" />
     <Compile Include="Dtos\CurtainTypeDto.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
+    <Compile Include="Dtos\NewPurchaseDto.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -276,7 +279,12 @@
     <Compile Include="Migrations\202006201717090_AddPhoneToApplicationUser.Designer.cs">
       <DependentUpon>202006201717090_AddPhoneToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006211448417_AddPurchaseClass.cs" />
+    <Compile Include="Migrations\202006211448417_AddPurchaseClass.Designer.cs">
+      <DependentUpon>202006211448417_AddPurchaseClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\SendCodeViewModel.cs" />
     <Compile Include="Models\VerifyCodeViewModel.cs" />
     <Compile Include="Models\ForgotViewModel.cs" />
@@ -540,6 +548,7 @@
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Curtains\CurtainForm.cshtml" />
     <Content Include="Views\Curtains\ReadOnlyList.cshtml" />
+    <Content Include="Views\Purchases\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -605,6 +614,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006201717090_AddPhoneToApplicationUser.resx">
       <DependentUpon>202006201717090_AddPhoneToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006211448417_AddPurchaseClass.resx">
+      <DependentUpon>202006211448417_AddPurchaseClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
