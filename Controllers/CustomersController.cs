@@ -78,12 +78,12 @@ namespace MarfazahFashion.Controllers
         public ActionResult Index()
         {
             //Data Caching
-            if (MemoryCache.Default["MembershipTypes"] == null)
-            {
-                MemoryCache.Default["MembershipTypes"] = _context.MembershipTypes.ToList();
-            }
+            //if (MemoryCache.Default["MembershipTypes"] == null)
+            //{
+            //    MemoryCache.Default["MembershipTypes"] = _context.MembershipTypes.ToList();
+            //}
 
-            var membershipTypes = MemoryCache.Default["MembershipTypes"] as IEnumerable<MembershipType>;
+            //var membershipTypes = MemoryCache.Default["MembershipTypes"] as IEnumerable<MembershipType>;
             return View();
         }
 
