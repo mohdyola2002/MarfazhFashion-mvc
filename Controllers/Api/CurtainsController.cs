@@ -22,13 +22,19 @@ namespace MarfazahFashion.Controllers.Api
 
         //GET api/curtains
         [HttpGet]
-        public IHttpActionResult GetCurtains()
+        public IHttpActionResult GetCurtains(string query = null)
         {
-            var curtains = _context.Curtains
+            var curtainsQuery = _context.Curtains
                 .Include(c => c.CurtainType)
+                .Where(c => c.NumberInStock > 0);
+
+            if (!string.IsNullOrWhiteSpace(query))
+                curtainsQuery = curtainsQuery.Where(c => c.Name.Contains(query));
+
+            var curtainDtos = curtainsQuery
                 .ToList()
                 .Select(Mapper.Map<Curtain, CurtainDto>);
-            return Ok(curtains);
+            return Ok(curtainDtos);
         }
 
         //GET api/curtains/1
