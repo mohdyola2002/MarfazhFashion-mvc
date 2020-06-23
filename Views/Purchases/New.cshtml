@@ -6,17 +6,17 @@
 
 <h2>New Purchase</h2>
 
-<form id="newPurchases">
+<form id="newPurchase">
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
-            <input id="customer" type="text" value="" class="form-control" />
+            <input id="customer" name="customer" required type="text" value="" class="form-control" />
         </div>
     </div>
     <div class="form-group">
         <label>Curtain</label>
         <div class="tt-container">
-            <input id="curtain" type="text" value="" class="form-control" />
+            <input id="curtain" name="curtain" type="text" value="" class="form-control" />
         </div>
     </div>
 
@@ -26,17 +26,17 @@
         </div>
     </div>
 
-    <button class="btn btn-primary">Submit</button>
+    <button class="btn btn-primary" >Submit</button>
 </form>
 
 @section  scripts
 {
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
             var vm = {
                 curtainIds: []
             };
-            //customer auto completion
             var customers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -58,7 +58,7 @@
                 vm.customerId = customer.id;
             });
 
-            //curtains auto completion
+            //curtains
             var curtains = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -81,22 +81,45 @@
 
                 $("#curtain").typeahead("val", "");
 
-                vm.curtainIds.push(curtains.id)
+                vm.curtainIds.push(curtains.id);
             });
-            $("#newPurchases").submit(function (e) {
-                e.preventDefault();
-                $.ajax({
-                    url: "/api/newPurchases",
-                    method: "post",
-                    data: vm
-                })
-                .done(function () {
-                    toastr.success("Purchase successfully recorded.");
-                })
-                .fail(function () {
-                    toastr.error("Something unexpected happenned.");
-                })
-            })
+
+            $.validator.addMethod("validCustomer", function () {
+                return vm.customerId && vm.customerId !== 0;
+            }, "Please select a valid customer.");
+
+            $.validator.addMethod("atleastOneCurtain", function () {
+                return vm.curtainIds.length > 0;
+            }, "Please select atleast one curtain.");
+
+            var validator = $("#newPurchase").validate({
+                rules: {
+                    customer: { validCustomer: true },
+                    curtain: { atleastOneCurtain: true }
+                },
+                submitHandler: function () {
+                    $.ajax({
+                        url: "/api/newPurchases",
+                        method: "post",
+                        data: vm
+                    })
+                    .done(function () {
+                        toastr.success("Purchase successfully recorded.");
+
+                        $("#customer").typeahead("val", "");
+                        $("#curtain").typeahead("val", "");
+                        $("#curtains").empty();
+
+                        vm = { curtainIds: [] };
+                        validator.resetForm();
+                    })
+                    .fail(function () {
+                        toastr.error("Something unexpected happenned.");
+                    });
+
+                    return false;
+                }
+            });
         })
     </script>
 }
