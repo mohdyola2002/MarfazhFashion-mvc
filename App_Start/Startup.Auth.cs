@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using MarfazahFashion.Models;
+using System.Configuration;
 
 namespace MarfazahFashion
 {
@@ -55,8 +56,8 @@ namespace MarfazahFashion
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-               appId: "277871503555034",
-               appSecret: "fc2a1e280e7a8a6a01c0a093147d4745");
+               appId: ConfigurationManager.AppSettings["FacebookAppId"],
+               appSecret: ConfigurationManager.AppSettings["FacebookAppSecret"]);
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
